@@ -64,7 +64,7 @@ def create_order(payload: OrderCreate, db: Session = Depends(get_db)):
 
     return db.query(Order).options(
         joinedload(Order.customer),
-        joinedload(Order.items)
+        joinedload(Order.items).joinedload(OrderItem.product)
     ).filter(Order.id == order.id).first()
 
 
@@ -72,7 +72,7 @@ def create_order(payload: OrderCreate, db: Session = Depends(get_db)):
 def get_all_orders(db: Session = Depends(get_db)):
     return db.query(Order).options(
         joinedload(Order.customer),
-        joinedload(Order.items)
+        joinedload(Order.items).joinedload(OrderItem.product)
     ).order_by(Order.created_at.desc()).all()
 
 
