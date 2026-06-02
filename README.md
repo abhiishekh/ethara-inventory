@@ -2,18 +2,17 @@
 
 A production-ready, fully containerized Inventory & Order Management System built with **FastAPI**, **React**, and **PostgreSQL**.
 
-> **Assessment submission for Ethara.ai — Software Engineer role**
-
 ---
 
 ## 🔗 Live Links
 
 | Service | URL |
 |---|---|
-| 🌐 Frontend | _Add Vercel URL here_ |
-| ⚙️ Backend API | _Add Render URL here_ |
-| 📖 API Docs | `{backend_url}/docs` |
-| 🐳 Docker Hub | _Add Docker Hub image URL here_ |
+| 🌐 Frontend | https://ethara-inventory-frontend.onrender.com |
+| ⚙️ Backend API | https://ethara-inventory.onrender.com/ |
+| 📖 API Docs | https://ethara-inventory.onrender.com/docs |
+| 🐳 Docker Hub Frontend | https://hub.docker.com/r/abhiishek08/ethara-frontend |
+| 🐳 Docker Hub Backend | https://hub.docker.com/r/abhiishek08/ethara-backend |
 
 ---
 
@@ -48,7 +47,7 @@ A production-ready, fully containerized Inventory & Order Management System buil
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/YOUR_USERNAME/ethara-inventory.git
+git clone https://github.com/abhiishekh/ethara-inventory.git
 cd ethara-inventory
 ```
 
@@ -65,7 +64,7 @@ docker compose up --build
 
 | Service | URL |
 |---|---|
-| Frontend | http://localhost:80 |
+| Frontend | http://localhost:3000 |
 | Backend API | http://localhost:8000 |
 | API Docs (Swagger) | http://localhost:8000/docs |
 | ReDoc | http://localhost:8000/redoc |
@@ -76,7 +75,8 @@ docker compose up --build
 
 Pull and run the backend image directly:
 ```bash
-docker pull YOUR_DOCKERHUB_USERNAME/ethara-inventory-backend:latest
+docker pull abhiishek/ethara-inventory-backend:latest
+docker pull abhiishek/ethara-inventory-frontend:latest
 ```
 
 ---
@@ -161,9 +161,9 @@ ethara-inventory/
    - `DATABASE_URL` → Render PostgreSQL connection string
    - `ALLOWED_ORIGINS` → Your Vercel frontend URL
 
-### Frontend → Vercel
+### Frontend → Render Static Site
 
-1. Import GitHub repo on [vercel.com](https://vercel.com)
+1. Import GitHub repo on [render.com](https://render.com)
 2. Set root directory: `frontend`
 3. Add environment variable:
    - `VITE_API_URL` → Your Render backend URL
@@ -172,8 +172,8 @@ ethara-inventory/
 ### Docker Hub (Backend Image)
 
 ```bash
-docker build -t YOUR_USERNAME/ethara-inventory-backend:latest ./backend
-docker push YOUR_USERNAME/ethara-inventory-backend:latest
+docker push abhiishek08/ethara-inventory-backend:latest
+docker build -t abhiishek08/ethara-inventory-backend:latest
 ```
 
 ---
@@ -192,4 +192,4 @@ docker push YOUR_USERNAME/ethara-inventory-backend:latest
 ## 👨‍💻 Author
 
 **Abhishek Maurya** — Full-Stack & GenAI Engineer  
-[hellocoders.in](https://hellocoders.in) · [GitHub](https://github.com/abhiishekh) · [LinkedIn](https://linkedin.com/in/abhiishek08)
+[GitHub](https://github.com/abhiishekh) · [LinkedIn](https://linkedin.com/in/abhiishek08)
