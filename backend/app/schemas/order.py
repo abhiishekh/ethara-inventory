@@ -27,12 +27,18 @@ class OrderCreate(BaseModel):
             raise ValueError("Order must have at least one item")
         return v
 
+class ProductResponse(BaseModel):
+    id: int
+    name: str
+
+    model_config = {"from_attributes": True}
 
 class OrderItemResponse(BaseModel):
     id: int
     product_id: int
     quantity: int
     unit_price: float
+    product: ProductResponse
 
     model_config = {"from_attributes": True}
 

@@ -43,6 +43,14 @@ def create_order(payload: OrderCreate, db: Session = Depends(get_db)):
     db.flush()  # Get order.id without committing
 
     for product, qty in order_items:
+        print(
+        f"Product={product.name}, Stock={product.quantity}, Ordered={qty}"
+        )
+        if product.quantity < qty:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Insufficient stock for {product.name}"
+            )
         db.add(OrderItem(
             order_id=order.id,
             product_id=product.id,
@@ -72,7 +80,7 @@ def get_all_orders(db: Session = Depends(get_db)):
 def get_order(order_id: int, db: Session = Depends(get_db)):
     order = db.query(Order).options(
         joinedload(Order.customer),
-        joinedload(Order.items)
+        joinedload(Order.items).joinedload(OrderItem.product)
     ).filter(Order.id == order_id).first()
     if not order:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Order not found")
