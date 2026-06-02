@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { getProducts, createProduct, updateProduct, deleteProduct } from '../api'
 import { Plus, Pencil, Trash2, Package, X } from 'lucide-react'
+import { confirmToast } from '../utils/confirmToast'
 
 const emptyForm = { name: '', sku: '', price: '', quantity: '', description: '' }
 
@@ -58,7 +59,8 @@ export default function Products() {
   }
 
   const handleDelete = async (id, name) => {
-    if (!confirm(`Delete "${name}"? This action cannot be undone.`)) return
+    const confirmed = await confirmToast(`Delete product "${name}"?`);
+    if (!confirmed) return
     try {
       await deleteProduct(id)
       toast.success('Product deleted')
