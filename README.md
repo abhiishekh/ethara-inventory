@@ -35,7 +35,7 @@ A production-ready, fully containerized Inventory & Order Management System buil
 | Frontend | React 18 + Vite + React Router |
 | Database | PostgreSQL 15 |
 | Containerization | Docker + Docker Compose |
-| Deployment | Render (backend) + Vercel (frontend) |
+| Deployment | Render (backend) + Render (frontend) |
 
 ---
 
